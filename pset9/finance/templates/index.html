@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_quote in user_quotes %}
+            <tr>
+                <td>{{user_quote["quote_symbol"]}}</td>
+                <td>{{user_quote["quote_companyName"]}}</td>
+                <td>{{user_quote["shares"]}}</td>
+                <td>{{user_quote["quote_latestPrice"]}}</td>
+                <td>{{user_quote["total"]}}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4">CASH</td>
+            <td>{{user.cash}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4"></td>
+            <td>{{total}}</td>
+        </tr>
+    </tfoot>
+</table>
+
+{% endblock %}

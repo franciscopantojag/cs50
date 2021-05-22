@@ -1,0 +1,1 @@
+SELECT m.title, r.rating FROM movies m, ratings r WHERE m.year = 2010 AND m.id IN (SELECT movie_id FROM ratings) AND r.movie_id = m.id ORDER BY r.rating DESC, m.title ASC;

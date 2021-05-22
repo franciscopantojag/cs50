@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Transacted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for historie in histories %}
+            <tr>
+                <td>{{historie['quote_symbol']}}</td>
+                {% if historie['shares'] < 0 %}
+                    <td class="text-danger">{{historie['shares']}}</td>                    
+                {% else %}                    
+                    <td class="text-success">+{{historie['shares']}}</td>
+                {% endif%}
+                <td>{{historie['quote_price']}}</td>
+                <td>{{ historie['date_time'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
